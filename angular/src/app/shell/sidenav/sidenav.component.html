@@ -1,5 +1,5 @@
 <mat-sidenav-container fxFlexFill class="mat-typography">
-    <mat-sidenav [opened]="opened" fxLayout="column" color="primary" mode="side">
+    <mat-sidenav [opened]="opened" fxLayout="column" color="primary" [mode]="isLargeScreen() ? 'side' : 'over'">
         <mat-nav-list>
            
             <ng-container *ngIf="sidenavItems; else noSidenavItems">

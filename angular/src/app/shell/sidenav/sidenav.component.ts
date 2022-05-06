@@ -34,6 +34,18 @@ export class SidenavComponent {
     this.opened = !this.opened;
   }
 
+  isLargeScreen() {
+    const width =
+      window.innerWidth ||
+      document.documentElement.clientWidth ||
+      document.body.clientWidth;
+    if (width > 720) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   constructor(
     @Inject(SIDENAV_ITEMS) @Optional() public sidenavItems?: SidenavItem[]
   ) {}
