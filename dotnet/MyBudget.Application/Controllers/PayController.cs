@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
 using MyBudget.Application.DataTransfer;
 using MyBudget.Domain;
 using MyBudget.Persistence;
@@ -42,13 +43,13 @@ public class PayController : Controller
 
         await this._unitOfWork.Pays.Add(pay);
         
-        return Created("Created", _mapper.Map<Pay>(pay));
+        return Created(nameof(GetPayById), _mapper.Map<PayDto>(pay));
     }
 
-    [HttpGet("{cityId}")]
-    public async Task<IActionResult> GetPayById(string cityId)
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetPayById(string id)
     {
-        var pay = await this._unitOfWork.Pays.FindById(cityId);
+        var pay = await this._unitOfWork.Pays.FindById(id);
     
         if (pay is null)
         {
