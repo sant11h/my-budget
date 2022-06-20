@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
 import moment from 'moment';
-import { Observable } from 'rxjs';
 import { Pay } from 'src/app/models/pay';
-import { randomIntFromInterval } from 'src/app/utils/math-utils';
-import { HomeService } from '../services/home.service';
+import { loadPays } from 'src/app/state/my-budget.actions';
+import { selectPays } from 'src/app/state/my-budget.selectors';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +11,7 @@ import { HomeService } from '../services/home.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-  public pays: Observable<Pay[]>;
+  public pays = this.store$.select(selectPays);
 
   public columns = [
     {
@@ -33,7 +33,7 @@ export class HomeComponent {
 
   public displayedColumns = this.columns.map((c) => c.columnDef);
 
-  constructor(private homeService: HomeService) {
-    this.pays = this.homeService.getAll();
+  constructor(private store$: Store) {
+    this.store$.dispatch(loadPays());
   }
 }

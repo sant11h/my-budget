@@ -1,5 +1,5 @@
 export interface Pay {
-  id?: string;
+  id: string;
   amount: number;
   date: Date;
   detail: string;

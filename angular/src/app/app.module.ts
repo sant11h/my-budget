@@ -4,12 +4,18 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
-import { environment } from 'src/environments/environment';
 import { BASE_API_URL, SIDENAV_ITEMS } from './app.tokens';
 import { ShellModule } from './shell/shell.module';
 import { sidenavItems } from './shell/shell.sidenavitems';
 import { HttpClientModule } from '@angular/common/http';
 import { BeautifyDatePipe } from './pipes/beautify-date.pipe';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { paysReducer } from './state/my-budget.reducer';
+import { MyBudgetEffects } from './state/my-budget.effects';
+import { MY_BUDGET_FEATURE_KEY } from './state/my-budget.reducer';
 
 @NgModule({
   declarations: [AppComponent, BeautifyDatePipe],
@@ -17,6 +23,13 @@ import { BeautifyDatePipe } from './pipes/beautify-date.pipe';
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
+    StoreModule.forRoot({}),
+    StoreModule.forFeature(MY_BUDGET_FEATURE_KEY, paysReducer),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
+    EffectsModule.forRoot([MyBudgetEffects]),
     HttpClientModule,
     ShellModule,
   ],
