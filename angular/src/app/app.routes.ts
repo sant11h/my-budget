@@ -1,11 +1,14 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './shell/not-found/not-found.component';
 
 export const appRoutes: Routes = [
   {
     path: 'home',
-    component: HomeComponent,
+    loadChildren: () =>
+      import(
+        /* webpackChunkName: "home" */
+        './home/component/home.module'
+      ).then((m) => m.HomeModule),
   },
   {
     path: '',

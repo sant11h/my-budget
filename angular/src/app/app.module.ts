@@ -7,17 +7,18 @@ import { appRoutes } from './app.routes';
 import { environment } from 'src/environments/environment';
 import { BASE_API_URL, SIDENAV_ITEMS } from './app.tokens';
 import { ShellModule } from './shell/shell.module';
-import { HomeModule } from './home/home.module';
 import { sidenavItems } from './shell/shell.sidenavitems';
+import { HttpClientModule } from '@angular/common/http';
+import { BeautifyDatePipe } from './pipes/beautify-date.pipe';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, BeautifyDatePipe],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
+    HttpClientModule,
     ShellModule,
-    HomeModule,
   ],
   providers: [
     { provide: BASE_API_URL, useValue: environment.baseApiUrl },
