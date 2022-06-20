@@ -1,6 +1,20 @@
-<div>
-  <button mat-raised-button color="primary">Create Pay</button>
+<div fxLayout="column" fxLayoutAlign="start start">
+  <form>
+    <mat-form-field appearance="fill" class="input">
+      <mat-label>Amount</mat-label>
+      <input [formControl]="amountControl" matInput placeholder="15">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="input">
+      <mat-label>Details</mat-label>
+      <input [formControl]="detailControl" matInput placeholder="Food">
+    </mat-form-field>
+  </form>
+  <button mat-raised-button color="primary" (click)="addPay()">Create Pay</button>
 </div>
+
+<mat-card>
+  <mat-card-title>Balance: ${{sumPays | async}}</mat-card-title>
+</mat-card>
 <div>
   <table mat-table [dataSource]="(pays | async) ?? []" class="mat-elevation-z8 demo-table">
     <ng-container *ngFor="let column of columns" [matColumnDef]="column.columnDef">
@@ -15,4 +29,5 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+
 </div>

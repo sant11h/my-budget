@@ -14,13 +14,13 @@ export function selectPayId(a: Pay): string {
   return a.id;
 }
 
-export function sortByName(a: Pay, b: Pay): number {
-  return new Date(a.date).getDate() - new Date(b.date).getDate();
+export function sortByDate(a: Pay, b: Pay): number {
+  return new Date(b.date).getTime() - new Date(a.date).getTime();
 }
 
 export const adapter: EntityAdapter<Pay> = createEntityAdapter<Pay>({
   selectId: selectPayId,
-  sortComparer: sortByName,
+  sortComparer: sortByDate,
 });
 
 export const initialState: MyBudgetState = adapter.getInitialState({
@@ -31,6 +31,9 @@ export const paysReducer = createReducer(
   initialState,
   on(MyBudgetActions.loadPaysSuccess, (state, { pays }) =>
     adapter.addMany(pays, state)
+  ),
+  on(MyBudgetActions.addPaySuccess, (state, { pay }) =>
+    adapter.addOne(pay, state)
   )
 );
 

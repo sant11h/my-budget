@@ -8,9 +8,7 @@ import { Pay } from '../../models/pay';
   providedIn: 'root',
 })
 export class HomeService {
-  public createPay(pay: Pay): Observable<Pay> {
-    console.log(this.apiUrl + '/pay');
-
+  public addPay(pay: Pay): Observable<Pay> {
     return this.httpClient.post<Pay>(this.apiUrl + '/pay', pay);
   }
 

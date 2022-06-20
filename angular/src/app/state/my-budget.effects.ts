@@ -19,5 +19,17 @@ export class MyBudgetEffects {
     )
   );
 
+  addPay$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(MyBudgetActions.addPay),
+      mergeMap((action) =>
+        this.homeService.addPay(action.pay).pipe(
+          map((pay) => MyBudgetActions.addPaySuccess({ pay })),
+          catchError((error) => of(MyBudgetActions.addPayErrored(error)))
+        )
+      )
+    )
+  );
+
   constructor(private actions$: Actions, private homeService: HomeService) {}
 }

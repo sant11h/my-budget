@@ -3,6 +3,15 @@ import { Pay } from '../models/pay';
 
 export const addPay = createAction('[Pay List] Add Pay', props<{ pay: Pay }>());
 
+export const addPaySuccess = createAction(
+  '[Pay List] Add Pay success',
+  props<{ pay: Pay }>()
+);
+export const addPayErrored = createAction(
+  '[Pay List] Add Pay errored',
+  props<{ error: string }>()
+);
+
 export const removePay = createAction(
   '[Pay Collection] Remove Pay',
   props<{ payId: string }>()
