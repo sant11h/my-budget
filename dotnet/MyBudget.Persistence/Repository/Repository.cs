@@ -30,11 +30,11 @@ public class Repository<T> : IRepository<T>
             .ToListAsync();
     }
 
-    public async Task<T> FirstById(string id)
+    public async Task<T?> FindById(string id)
     {
         return await Collection.FindAsync(new BsonDocument { { "_id", new ObjectId(id) } })
             .Result
-            .FirstAsync();
+            .FirstOrDefaultAsync();
     }
 
     public async Task Add(T entity)

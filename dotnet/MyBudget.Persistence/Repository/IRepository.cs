@@ -10,7 +10,7 @@ public interface IRepository<T>
 
     Task Remove(string id);
     Task<List<T>> GetAll();
-    Task<T> FirstById(string id);
+    Task<T?> FindById(string id);
     Task Add(T entity);
     Task AddRange(IEnumerable<T> entities);
     Task Update(T entity);

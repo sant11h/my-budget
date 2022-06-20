@@ -5,21 +5,14 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
-
     
     <ItemGroup>
       <PackageReference Include="MongoDB.Driver" Version="2.15.0" />
-      <PackageReference Include="Microsoft.Extensions.Options" />
+      <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0"/>
     </ItemGroup>
-
     
     <ItemGroup>
       <ProjectReference Include="..\MyBudget.Domain\MyBudget.Domain.csproj" />
-    </ItemGroup>
-
-    
-    <ItemGroup>
-      <Folder Include="Repository\Interfaces" />
     </ItemGroup>
 
 </Project>

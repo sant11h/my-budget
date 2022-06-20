@@ -5,7 +5,7 @@ namespace MyBudget.Domain;
 
 public class Pay : DomainEntity
 {
-    public decimal Amount { get; set; }
+    public decimal Amount { get; set; } 
 
     public DateTime Date { get; set; }
     
