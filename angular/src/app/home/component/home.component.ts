@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import moment from 'moment';
 import { BASE_API_URL } from 'src/app/app.tokens';
@@ -14,8 +14,8 @@ import { randomIntFromInterval } from 'src/app/utils/math-utils';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-  public amountControl = new FormControl('');
-  public detailControl = new FormControl('');
+  public amountControl = new UntypedFormControl('');
+  public detailControl = new UntypedFormControl('');
 
   public pays = this.store$.select(selectPays);
   public sumPays = this.store$.select(totalAmountPays);
