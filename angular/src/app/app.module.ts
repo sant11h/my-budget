@@ -16,6 +16,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { paysReducer } from './state/my-budget.reducer';
 import { MyBudgetEffects } from './state/my-budget.effects';
 import { MY_BUDGET_FEATURE_KEY } from './state/my-budget.reducer';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 @NgModule({
   declarations: [AppComponent, BeautifyDatePipe],
@@ -32,6 +33,7 @@ import { MY_BUDGET_FEATURE_KEY } from './state/my-budget.reducer';
     EffectsModule.forRoot([MyBudgetEffects]),
     HttpClientModule,
     ShellModule,
+    StoreRouterConnectingModule.forRoot(),
   ],
   providers: [
     { provide: BASE_API_URL, useValue: environment.baseApiUrl },
