@@ -9,7 +9,6 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatMenuModule } from '@angular/material/menu';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
@@ -25,7 +24,6 @@ import { CommonModule } from '@angular/common';
   imports: [
     CommonModule,
     RouterModule.forChild([]),
-    FlexLayoutModule,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,

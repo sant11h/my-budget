@@ -1,6 +1,4 @@
-<div class="content-container" fxLayout="column">
   <app-toolbar (clicked)="onSidenavButton()"></app-toolbar>
-  <app-sidenav class="sidebar" fxFlex [(opened)]="isSidenavOpened">
+  <app-sidenav  [(opened)]="isSidenavOpened">
     <ng-content></ng-content>
   </app-sidenav>
-</div>
